@@ -11,4 +11,8 @@
   <p>
     If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
   </p>
+
+  <li *ngFor="let c of contacts"> 
+    {{c.name}} - {{c.phone}} - {{c.email}}
+  </li>
 </ion-content>
