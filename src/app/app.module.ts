@@ -18,7 +18,10 @@ import { StorageProvider } from '../providers/storage/storage';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot({
+      name: '__mydb',
+      storeName: 'contacts'
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
