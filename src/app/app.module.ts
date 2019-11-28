@@ -9,11 +9,13 @@ import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { StorageProvider } from '../providers/storage/storage';
+import { EditPage } from '../pages/edit/edit';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    EditPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { StorageProvider } from '../providers/storage/storage';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    EditPage
   ],
   providers: [
     StatusBar,
