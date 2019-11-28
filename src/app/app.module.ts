@@ -5,17 +5,20 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { FormsModule } from '@angular/forms';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { StorageProvider } from '../providers/storage/storage';
 import { EditPage } from '../pages/edit/edit';
+import { CreatePage } from '../pages/create/create';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    EditPage
+    EditPage,
+    CreatePage
   ],
   imports: [
     BrowserModule,
@@ -23,13 +26,15 @@ import { EditPage } from '../pages/edit/edit';
     IonicStorageModule.forRoot({
       name: '__mydb',
       storeName: 'contacts'
-    })
+    }),
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    EditPage
+    EditPage,
+    CreatePage
   ],
   providers: [
     StatusBar,

@@ -1,3 +1,5 @@
+import { StorageProvider } from './../../providers/storage/storage';
+import { Contact } from './../../model/contact';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -14,12 +16,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'create.html',
 })
 export class CreatePage {
+  contact: Contact = {
+    'name' : null,
+    'email': null,
+    'phone': null
+  };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private storageProvider: StorageProvider
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreatePage');
   }
 
+  createContact() {
+    this.storageProvider.set('contact', this.contact);
+  }
 }

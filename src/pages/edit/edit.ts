@@ -1,7 +1,8 @@
+import { Contact } from './../../model/contact';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { StorageProvider } from '../../providers/storage/storage';
-import { Contact } from '../../model/contact';
+
+import { StorageProvider } from './../../providers/storage/storage';
 
 /**
  * Generated class for the EditPage page.
@@ -16,19 +17,23 @@ import { Contact } from '../../model/contact';
   templateUrl: 'edit.html',
 })
 export class EditPage {
-  contact: Contact = { email: '', name: '', phone: null };
+
+  contact: Contact = {'email': '', 'name': '',  'phone': null};
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private StorageProvider: StorageProvider
-  ) {
-    this.StorageProvider.get(this.navParams.get('id'))
-      .then((contact) => this.contact = contact);
+    private storageProvider: StorageProvider) {
+      this.storageProvider.get(this.navParams.get('id'))
+                          .then((contact) => this.contact = contact);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditPage');
+  }
+
+  updateContact() {
+    this.storageProvider.update('contact', this.contact);
   }
 
 }

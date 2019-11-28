@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contatos
+      Ionic Blank
     </ion-title>
 
     <ion-buttons end>
@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let c of contacts" (click)="goToEditPage(c.id)">
+    <button ion-item *ngFor="let c of contacts" (click)="goToEditPage('contact')">
       {{c.name}}
     </button>
   </ion-list>
