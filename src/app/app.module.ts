@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { StorageProvider } from '../providers/storage/storage';
 import { EditPage } from '../pages/edit/edit';
 import { CreatePage } from '../pages/create/create';
+import { ToastProvider } from '../providers/toast/toast';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { CreatePage } from '../pages/create/create';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    StorageProvider
+    StorageProvider,
+    ToastProvider
   ]
 })
 export class AppModule {}

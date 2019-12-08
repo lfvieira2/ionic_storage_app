@@ -1,8 +1,10 @@
+import { ToastProvider } from './../../providers/toast/toast';
 import { Contact } from './../../model/contact';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { StorageProvider } from './../../providers/storage/storage';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the EditPage page.
@@ -18,14 +20,15 @@ import { StorageProvider } from './../../providers/storage/storage';
 })
 export class EditPage {
 
-  contact: Contact = {'email': '', 'name': '',  'phone': null};
+  contact: Contact = { 'email': '', 'name': '', 'phone': null };
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private storageProvider: StorageProvider) {
-      this.storageProvider.get(this.navParams.get('id'))
-                          .then((contact) => this.contact = contact);
+    private storageProvider: StorageProvider,
+    private toastProvider: ToastProvider) {
+    this.storageProvider.get(this.navParams.get('id'))
+      .then((contact) => this.contact = contact);
   }
 
   ionViewDidLoad() {
@@ -33,10 +36,24 @@ export class EditPage {
   }
 
   updateContact(key) {
-    this.storageProvider.update(key, this.contact);
+    this.storageProvider.update(key, this.contact)
+      .then(() => {
+        this.toastProvider.createToast('Contato atualizado com sucesso');
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch((error) => {
+        this.toastProvider.createToast(error);
+      });
   }
 
   removeContact(key) {
-    this.storageProvider.remove(key);
+    this.storageProvider.remove(key)
+      .then(() => {
+        this.toastProvider.createToast('Contato removido com sucesso');
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch((error) => {
+        this.toastProvider.createToast(error);
+      });
   }
 }
