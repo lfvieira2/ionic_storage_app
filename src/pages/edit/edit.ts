@@ -32,8 +32,11 @@ export class EditPage {
     console.log('ionViewDidLoad EditPage');
   }
 
-  updateContact() {
-    this.storageProvider.update('contact', this.contact);
+  updateContact(key) {
+    this.storageProvider.update(key, this.contact);
   }
 
+  removeContact(key) {
+    this.storageProvider.remove(key);
+  }
 }

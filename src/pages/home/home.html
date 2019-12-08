@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let c of contacts" (click)="goToEditPage('contact')">
+    <button ion-item *ngFor="let c of contacts" (click)="goToEditPage(c.id)">
       {{c.name}}
     </button>
   </ion-list>
